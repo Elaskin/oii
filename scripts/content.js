@@ -43,11 +43,10 @@
 console.log("starting extension...")
 ii(0);
 
-window.navigation.addEventListener("navigate", (event) => {
-    console.log("navigate detected");
+window.addEventListener("turbo:render", () => {
     //matches /users/<id>/osu though the /osu is optional and other gamemodes (taiko, mania, fruits) won't match
     const regex = /\/users\/\d+(\/osu)?$/;
-    if (regex.test(event.destination.url))
+    if (regex.test(window.location.pathname))
         ii(0);
 })
 
